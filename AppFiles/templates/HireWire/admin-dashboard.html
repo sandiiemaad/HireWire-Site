@@ -1,0 +1,107 @@
+{% load static %}
+{% load humanize %}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <link rel="stylesheet" href="{% static 'HireWire/admin-dashboard.css' %}">
+    <link rel="stylesheet" href="{% static 'HireWire/darkmodeadmin.css' %}">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin Dashboard - HireWire</title>
+    <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Poppins:wght@400;600&display=swap" rel="stylesheet">
+</head>
+<body>
+    <header>
+        <div class="logo-container">
+            <div class="logo">HireWire <span>Admin</span></div>
+            <nav class="main-nav">
+                <div class="jobs-dropdown">
+                    <button class="dropdown-toggle">
+                        Your Posted Jobs ▼
+                    </button>
+                    <ul class="dropdown-menu" id="jobsDropdown">
+                        <li class="dropdown-loading">Loading jobs...</li>
+                    </ul>
+                </div>
+                <a href="{% url 'settings' %}" class="settings-btn">⚙️</a>
+                <a href="{% url 'logout' %}" class="logout-btn">Logout</a>
+            </nav>
+        </div>
+    </header>
+    <div class="container">
+        <aside class="sidebar">
+            <h3>Admin Panel</h3>
+            <ul>
+                <li><a href="#" class="active">Job Management</a></li>
+                <li><a href="{% url 'settings' %}">Settings</a></li>
+            </ul>
+        </aside>
+        <main class="main-content">
+            <div class="dashboard-header">
+                <h2>Job Listings</h2>
+                <a href="{% url 'add_job' %}" class="btn btn-primary">+ Add New Job</a>
+            </div>
+            
+            <table class="jobs-table" id="jobsTable">
+                <thead>
+                    <tr>
+                        <th>Title</th>
+                        <th>Position</th>
+                        <th>Salary</th>
+                        <th>Post Date</th>
+                        <th>Status</th>
+                        <th>Experience</th>
+                        <th>Actions</th>
+                    </tr>
+                </thead>
+                <tbody id="jobsTableBody">
+                    <!-- Table will be populated by JavaScript -->
+                </tbody>
+            </table>
+            
+            <!-- Edit Job Modal (hidden by default) -->
+            <div id="editModal" class="modal">
+                <div class="modal-content">
+                    <h3>Edit Job</h3>
+                    <form id="editJobForm">
+                        {% csrf_token %}
+                        <input type="hidden" id="editJobId" name="job_id">
+                        <div class="form-group">
+                            <label for="editJobTitle">Job Title</label>
+                            <input type="text" id="editJobTitle" name="title">
+                        </div>
+                        <div class="form-group">
+                            <label for="editJobPosition">Position</label>
+                            <input type="text" id="editJobPosition" name="position">
+                        </div>
+                        <div class="form-group">
+                            <label for="editJobSalary">Salary</label>
+                            <input type="text" id="editJobSalary" name="salary">
+                        </div>
+                        <div class="form-group">
+                            <label for="editJobType">Job Type</label>
+                            <select id="editJobType" name="job_type" required>
+                                <option value="">Select job type</option>
+                                <option value="full-time">Full-time</option>
+                                <option value="part-time">Part-time</option>
+                                <option value="contract">Contract</option>
+                                <option value="internship">Internship</option>
+                            </select>
+                        </div>
+                        <div class="modal-actions">
+                            <button type="submit">Save</button>
+                            <button type="button" onclick="document.getElementById('editModal').style.display='none'" class="cancel">Cancel</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </main>
+    </div>
+    <script src="{% static 'HireWire/admin-dashboard.js' %}"></script>
+    <script src="{% static 'HireWire/darkmode.js' %}"></script>
+    <script>
+        const EDIT_JOB_URL = "{% url 'edit_job' 0 %}".replace('0', '');
+    </script>
+</body>
+</html>

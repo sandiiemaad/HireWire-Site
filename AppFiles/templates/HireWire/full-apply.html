@@ -1,0 +1,98 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <script src="{% static 'HireWire/full-apply.js' %}" defer></script>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Full Apply - HireWire</title>
+  <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Poppins:wght@400;600&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" />
+  <link rel="stylesheet" href="{% static 'HireWire/dashboard.css' %}" />
+  <link rel="stylesheet" href="{% static 'HireWire/apply.css' %}" />
+  <script src="{% static 'HireWire/darkmode.js' %}" defer></script>
+  <link rel="stylesheet" href="{% static 'HireWire/darkmode.css' %}">
+</head>
+<body>
+  <header>
+    <div class="logo">Hire<span>Wire</span></div>
+    <nav>
+      <a href="{% url 'user-dashboard' %}">
+        <i class="fas fa-arrow-left"></i> Back to Dashboard
+      </a>
+    </nav>
+  </header>
+
+  <div class="container">
+    <div class="job-summary">
+      <h2>{{ job.title }}</h2>
+      <div class="company">{{ job.company }}</div>
+      <div class="job-details">
+        <div class="detail"><i class="fas fa-map-marker-alt"></i> <span>{{ job.location }}</span></div>
+        <div class="detail"><i class="fas fa-money-bill-wave"></i> <span>{{ job.salary }}</span></div>
+        <div class="detail"><i class="fas fa-clock"></i> <span>{{ job.type }}</span></div>
+      </div>
+      <div class="job-description">
+        <h3>Job Description</h3>
+        <p>{{ job.description }}</p>
+      </div>
+    </div>
+
+    <div class="application-form">
+      <h2>Complete Application</h2>
+      <form method="POST" enctype="multipart/form-data">
+        {% csrf_token %}
+        <input type="hidden" name="job_id" value="{{ job.id }}" />
+        <div class="form-row">
+          <div class="form-group">
+            <label for="firstName">First Name <span class="required">*</span></label>
+            <input type="text" id="firstName" name="first_name" required />
+          </div>
+          <div class="form-group">
+            <label for="lastName">Last Name <span class="required">*</span></label>
+            <input type="text" id="lastName" name="last_name" required />
+          </div>
+        </div>
+        <div class="form-row">
+          <div class="form-group">
+            <label for="email">Email <span class="required">*</span></label>
+            <input type="email" id="email" name="email" required />
+          </div>
+          <div class="form-group">
+            <label for="fullPhone">Phone <span class="required">*</span></label>
+            <input
+              type="tel"
+              id="fullPhone"
+              name="phone"
+              pattern="[0-9]{10}"
+              title="Please enter a valid 10-digit phone number"
+              required
+            />
+            <span class="hint">Enter a 10-digit phone number</span>
+          </div>
+        </div>
+        <div class="form-group">
+          <label for="lastProjects">Last Projects <span class="required">*</span></label>
+          <textarea id="lastProjects" name="last_projects" rows="3" required></textarea>
+          <span class="hint">Describe your recent projects and your role in them</span>
+        </div>
+        <div class="form-group">
+          <label for="experience">Experience (years) <span class="required">*</span></label>
+          <input type="number" id="experience" name="experience" min="0" required />
+        </div>
+        <div class="form-group">
+          <label for="skills">Skills <span class="required">*</span></label>
+          <textarea id="skills" name="skills" rows="3" required></textarea>
+          <span class="hint">List your relevant technical and soft skills</span>
+        </div>
+        <div class="form-group">
+          <label for="expectedSalary">Expected Salary <span class="required">*</span></label>
+          <input type="number" id="expectedSalary" name="expected_salary" min="1000" max="1000000" required />
+          <span class="hint">Enter amount in USD (1,000 - 1,000,000)</span>
+        </div>
+        <button type="submit" class="submit-btn full">Submit Application</button>
+      </form>
+    </div>
+  </div>
+</body>
+</html>

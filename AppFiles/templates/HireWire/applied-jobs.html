@@ -1,0 +1,81 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Applied Jobs - HireWire</title>
+    <script src="{% static 'HireWire/darkmode.js' %}" defer></script>
+    <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Poppins:wght@400;600&display=swap" rel="stylesheet" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" />
+    <link rel="stylesheet" href="{% static 'HireWire/dashboard.css' %}" />
+    <link rel="stylesheet" href="{% static 'HireWire/applied-jobs.css' %}" />
+    <link rel="stylesheet" href="{% static 'HireWire/darkmode.css' %}" />
+</head>
+<body>
+    <header>
+        <div class="logo">Hire<span>Wire</span></div>
+        <nav>
+            <a href="{% url 'user-dashboard' %}" class="dashboard-btn">
+                <i class="fas fa-home"></i> Dashboard
+            </a>
+            <a href="{% url 'settings' %}" class="settings-btn">
+                <i class="fas fa-cog"></i>
+            </a>
+            <a href="{% url 'logout' %}"><i class="fas fa-sign-out-alt"></i> Logout</a>
+        </nav>
+    </header>
+
+    <div class="applied-jobs-container">
+        <h1>Your Applied Jobs</h1>
+        
+        
+        <div class="applied-jobs-list" id="appliedJobsList">
+            {% for application in applied_jobs %}
+            <div class="job-card" data-status="{{ application.status|lower }}">
+                <div class="job-header">
+                    <h3>{{ application.job.title }}</h3>
+                    <span class="status-badge {{ application.status|lower }}">{{ application.status }}</span>
+                </div>
+                <div class="job-details">
+                    <p><i class="fas fa-building"></i> {{ application.job.job_type }}</p>
+                    <p><i class="fas fa-map-marker-alt"></i> {{ application.job.location }}</p>
+                    <p><i class="fas fa-calendar-alt"></i> Applied on: {{ application.applied_at|date:"M d, Y" }}</p>
+                </div>
+                    <div class="job-description">
+                    <p><strong>Job Description:</strong></p>
+                    <p class="description-text">{{ application.job.description|truncatewords:30 }}</p>
+                    <button class="show-more-btn">Show more</button>
+                </div>
+
+            </div>
+            {% empty %}
+            <div class="no-applications">
+                <i class="fas fa-clipboard-list"></i>
+                <p>You haven't applied to any jobs yet.</p>
+                <a href="{% url 'user-dashboard' %}" class="browse-jobs-btn">Browse Jobs</a>
+            </div>
+            {% endfor %}
+        </div>
+    </div>
+
+    <script src="{% static 'HireWire/applied-jobs.js' %}"></script>
+    <script>
+        document.querySelectorAll('.show-more-btn').forEach(btn => {
+            btn.addEventListener('click', function() {
+                const description = this.previousElementSibling;
+                const fullText = description.dataset.full || description.textContent;
+                
+                if (this.textContent === 'Show more') {
+                    description.textContent = fullText;
+                    this.textContent = 'Show less';
+                    description.dataset.full = fullText;
+                } else {
+                    description.textContent = fullText.split(' ').slice(0, 30).join(' ') + '...';
+                    this.textContent = 'Show more';
+                }
+            });
+        });
+    </script>
+</body>
+</html>

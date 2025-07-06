@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        {% load static %}
+        <link rel="stylesheet" href="{% static 'HireWire/job-seeker.css' %}">
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Continue - HireWire</title>
+        <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Poppins:wght@400;600&display=swap" rel="stylesheet">
+    </head>
+<body>
+    <div class="signin-container">
+        <div class="logo">
+            <h2>HireWire</h2>
+            <p>Fast like lightning!</p>
+        </div>
+        <form id="jobseeker-form" method="POST" action="{% url 'job-seeker' %}">
+            {% csrf_token %}
+            <div class="form-group">
+                <label for="education">Select University</label>
+                <select id="education" name="education" class="form-control" required>
+                    <option value="" disabled selected>Select your University</option>
+                    <option value="Cairo">Cairo University</option>
+                    <option value="ain shams">Ain Shams University</option>
+                    <option value="newgiza">New Giza University</option>
+                    <option value="guc">GUC University</option>
+                    <option value="auc">AUC University</option>
+                    <option value="Alexandria">Alexandria University</option>
+                    <option value="PortSaid">Port Said University</option>
+                    <option value="Mansoura">Mansoura University</option>
+                    <option value="Fayoum">Fayoum University</option>
+                </select>
+            </div>
+            
+            <div class="form-group">
+                <label for="gradField">Graduated Field</label>
+                <input type="text" id="gradField" name="gradField" class="form-control" placeholder="Enter your field">
+            </div>
+            
+            <div class="form-group">
+                <label for="graddegree">Graduated Degree</label>
+                <input type="text" id="graddegree" name="graddegree" class="form-control" placeholder="Enter your degree">
+            </div>
+            
+            <div class="form-group">
+                <label for="gpa">GPA</label>
+                <input type="text" id="gpa" name="gpa" class="form-control" placeholder="Enter your GPA" required>
+            </div>
+            
+            <div class="form-group">
+                <label for="years">Experience Years</label>
+                <input type="text" id="years" name="years" class="form-control" placeholder="Enter your experience years" required>
+            </div>
+            
+            <div class="form-group">
+                <label for="preferences">Select Preferences</label>
+                <select id="preferences" name="preferences" class="form-control" required>
+                    <option value="" disabled selected>Select your Preferences</option>
+                    <option value="part">Part time</option>
+                    <option value="full">Full time</option>
+                </select>
+            </div>
+            
+            <div class="form-group">
+                <label for="workfrom">Work From</label>
+                <select id="workfrom" name="workfrom" class="form-control" required>
+                    <option value="" disabled selected>Select your Preference</option>
+                    <option value="remote">Remotely</option>
+                    <option value="onsite">On Site</option>
+                </select>
+            </div>
+            
+            <div class="form-group">
+                <label for="location">Select Location</label>
+                <select id="location" name="location" class="form-control" required>
+                    <option value="" disabled selected>Select your city</option>
+                    <option value="Cairo">Cairo</option>
+                    <option value="Giza">Giza</option>
+                    <option value="Alexandria">Alexandria</option>
+                    <option value="PortSaid">Port Said</option>
+                    <option value="Mansoura">Mansoura</option>
+                    <option value="Fayoum">Fayoum</option>
+                </select>
+            </div>
+            
+            <button type="submit" class="btn-submit">Submit</button>
+        </form>
+    </div>
+</body>
+</html>

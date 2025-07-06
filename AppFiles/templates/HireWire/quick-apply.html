@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    {% load static %}
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Quick Apply - HireWire</title>
+    <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Poppins:wght@400;600&display=swap" rel="stylesheet" />
+    <link rel="stylesheet" href="{% static 'HireWire/dashboard.css' %}" />
+    <link rel="stylesheet" href="{% static 'HireWire/apply.css' %}" />
+    <script src="{% static 'HireWire/darkmode.js' %}" defer></script>
+  <link rel="stylesheet" href="{% static 'HireWire/darkmode.css' %}">
+</head>
+<body>
+    <header>
+        <div class="logo">Hire<span>Wire</span></div>
+        <nav>    
+           <a href="{% url 'user-dashboard' %}" class="btn-back">Back to Dashboard</a>
+        </nav>
+    </header>
+    <div class="container">
+        <div class="job-summary">
+            <h2>{{ job.title }}</h2>
+            <div class="company">{{ job.company }}</div>
+        </div>
+        <div class="application-form">
+            <h2>Quick Apply</h2>
+            <form method="POST" enctype="multipart/form-data">
+                {% csrf_token %}
+                <input type="hidden" name="job_id" value="{{ job.id }}" />
+                <div class="form-group">
+                    <label for="name">Full Name <span class="required">*</span></label>
+                    <input type="text" id="name" name="name" required />
+                </div>
+                <div class="form-group">
+                    <label for="phone">Phone Number <span class="required">*</span></label>
+                    <input type="tel" id="phone" name="phone" pattern="[0-9]{10}" required />
+                </div>
+                <div class="form-group">
+                    <label for="resume">Resume <span class="required">*</span></label>
+                    <input type="file" id="resume" name="resume" accept=".pdf,.doc,.docx" required />
+                </div>
+                <button type="submit" class="submit-btn quick">Submit Application</button>
+            </form>
+        </div>
+    </div>
+</body>
+</html>

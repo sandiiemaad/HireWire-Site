@@ -1,0 +1,123 @@
+{% load static %}
+{% csrf_token %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <script src="{% static 'HireWire/settings.js' %}" defer></script>
+    <script src="{% static 'HireWire/darkmode.js' %}" defer></script>
+    <script src="{% static 'HireWire/change-password.js' %}" defer></script>
+    <link rel="stylesheet" href="{% static 'HireWire/settings.css' %}">
+    <link rel="stylesheet" href="{% static 'HireWire/darkmode.css' %}">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Settings - HireWire</title>
+    <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Poppins:wght@400;600&display=swap" rel="stylesheet">
+</head>
+<body>
+<div class="container">
+    <header>
+        <div class="logo">HireWire <span>Settings</span></div>
+        <a href="{% url 'back-to-dashboard' %}" class="btn-back">Back to Dashboard</a>
+    </header>
+
+    <main class="settings-content">
+        <div class="content-inside">
+            {% if messages %}
+                <div id="popupMessage" class="popup-message">
+                    {% for message in messages %}
+                        {{ message }}
+                    {% endfor %}
+                </div>
+            {% endif %}
+
+            <section class="settings-section" id="appearance">
+                <h2>🌓 Appearance Settings</h2>
+                <div class="setting-item">
+                    <div>
+                        <h4>Dark Mode</h4>
+                        <p>Toggle between light and dark theme</p>
+                    </div>
+                    <label class="toggle-switch">
+                        <input type="checkbox" id="darkModeToggle">
+                        <span class="slider"></span>
+                    </label>
+                </div>
+            </section>
+
+            <section class="settings-section" id="account">
+                <h2>🔐 Account Settings</h2>
+                <div class="setting-group">
+                    <h3>Change Password</h3>
+                    <form id="change-password-form" action="{% url 'settings' %}" method="post">
+                        {% csrf_token %}
+                        <div class="form-group">
+                            <label for="id_old_password">Current Password</label>
+                            <input type="password" name="old_password" autocomplete="current-password" 
+                                class="form-control" required id="id_old_password">
+                            {% if password_form.old_password.errors %}
+                                <div class="error">{{ password_form.old_password.errors }}</div>
+                            {% endif %}
+                        </div>
+
+                        <div class="form-group">
+                            <label for="id_new_password1">New Password</label>
+                            <input type="password" name="new_password1" autocomplete="new-password" 
+                                class="form-control" required id="id_new_password1">
+                            <small class="form-text text-muted">
+                                Your password must contain: 10+ characters, at least one uppercase letter,
+                                one number, and one special character.
+                            </small>
+                            {% if password_form.new_password1.errors %}
+                                <div class="error">
+                                    {% for error in password_form.new_password1.errors %}
+                                        {{ error|cut:"new_password1: " }}
+                                    {% endfor %}
+                                </div>
+                            {% endif %}
+                        </div>
+
+                        <div class="form-group">
+                            <label for="id_new_password2">Confirm New Password</label>
+                            <input type="password" name="new_password2" autocomplete="new-password" 
+                                class="form-control" required id="id_new_password2">
+                            {% if password_form.new_password2.errors %}
+                                <div class="error">
+                                    {% for error in password_form.new_password2.errors %}
+                                        {{ error|cut:"new_password2: " }}
+                                    {% endfor %}
+                                </div>
+                            {% endif %}
+                        </div>
+
+                        <button type="submit" name="change_password" class="btn btn-primary">Update Password</button>
+                    </form>
+
+                    <div id="password-error" class="alert alert-danger mt-3" style="display: none;"></div>
+                    <div id="password-success" class="alert alert-success mt-3" style="display: none;"></div>
+                </div> 
+            </section>
+
+            <section class="settings-section" id="contact">
+                <h2>📩 Contact Our Cyber Team</h2>
+                <p>Send a message through our secure quantum network</p>
+                <form class="contact-form" id="contactForm">
+                    <div class="form-group">
+                        <label for="subject">Subject</label>
+                        <input type="text" id="subject" placeholder="Enter message subject" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="message">Your Encrypted Message</label>
+                        <textarea id="message" placeholder="Type your message here..." required></textarea>
+                    </div>
+                    <button type="submit" class="btn btn-primary">Transmit Message</button>
+                </form>
+                <div class="confirmation" id="confirmation">
+                    <h4>⚡ Message Successfully Sent Through Quantum Network!</h4>
+                    <p>Your cyber team will respond within 24-48 light years. Message ID: <span id="messageId"></span></p>
+                </div>
+            </section>
+        </div>
+    </main>
+</div>
+</body>
+</html>

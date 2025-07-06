@@ -1,0 +1,45 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <script src="{% static 'HireWire/user-dashboard.js' %}"></script>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>User Dashboard - HireWire</title>
+    <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Poppins:wght@400;600&display=swap" rel="stylesheet" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" />
+    <link rel="stylesheet" href="{% static 'HireWire/dashboard.css' %}" />
+    <link rel="stylesheet" href="{% static 'HireWire/buttons.css' %}" />
+    <link rel="stylesheet" href="{% static 'HireWire/darkmode.css' %}" />
+    <script src="{% static 'HireWire/darkmode.js' %}" defer></script>
+</head>
+<body>
+    <header>
+        <div class="logo">Hire<span>Wire</span></div>
+    <nav>
+        <a href="{% url 'applied-jobs' %}" class="applied-jobs-btn">
+            <i class="fas fa-clipboard-check"></i> Applied Jobs
+        </a>
+        <a href="{% url 'settings' %}" class="settings-btn">
+            <i class="fas fa-cog"></i>
+        </a>
+        <a href="{% url 'logout' %}"><i class="fas fa-sign-out-alt"></i> Logout</a>
+    </nav>
+    </header>
+
+    <div class="search-bar">
+        <input type="text" class="search-input" id="jobSearch" placeholder="Search by job title..." />
+        <input type="number" class="search-input" id="yearsExperience" placeholder="Years of experience" min="0" step="1">
+        <button class="search-btn" id="searchButton">Search</button>
+        <button class="clear-btn" id="clearButton">Clear</button>
+    </div>
+    <div class="jobs-container" id="jobsContainer">
+    </div>
+    <div id="alertsModal" class="modal">
+        <div class="modal-content">
+            <h3>Job Alerts</h3>
+            <div id="jobAlerts"></div>
+        </div>
+    </div>
+</body>
+</html>

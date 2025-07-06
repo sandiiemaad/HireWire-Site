@@ -1,0 +1,98 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Edit Job - HireWire</title>
+    <link rel="stylesheet" href="{% static 'HireWire/admin-dashboard.css' %}">
+    <link rel="stylesheet" href="{% static 'HireWire/darkmodeadmin.css' %}">
+    <script src="{% static 'HireWire/darkmode.js' %}"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Poppins:wght@400;600&display=swap" rel="stylesheet">
+</head>
+<body>
+    <header>
+        <div class="logo">HireWire <span>Admin</span></div>
+        <nav>
+            <a href="{% url 'admin_dashboard' %}">Back to Dashboard</a>
+            <a href="{% url 'logout' %}">Logout</a>
+        </nav>
+    </header>
+    
+    <div class="container">
+        <main class="main-content">
+            <h2>Edit Job</h2>
+            
+            <form id="editJobForm" method="POST" action="{% url 'update_job' job.id %}">
+                {% csrf_token %}
+                <input type="hidden" id="editJobId" name="job_id" value="{{ job.id }}">
+                
+                <div class="form-group">
+                    <label for="editJobTitle">Job Title</label>
+                    <input type="text" id="editJobTitle" name="title" value="{{ job.title }}" required>
+                </div>
+                
+                <div class="form-group">
+                    <label for="editJobPosition">Position</label>
+                    <input type="text" id="editJobPosition" name="position" value="{{ job.position }}" required>
+                </div>
+                
+                <div class="form-group">
+                    <label for="editJobSalary">Salary</label>
+                    <input type="number" id="editJobSalary" name="salary" value="{{ job.salary_min }}" required>
+                </div>
+                
+                <div class="form-group">
+                    <label for="editJobType">Job Type</label>
+                    <select id="editJobType" name="job_type" required>
+                        <option value="">Select job type</option>
+                        <option value="full-time" {% if job.job_type == 'full-time' %}selected{% endif %}>Full-time</option>
+                        <option value="part-time" {% if job.job_type == 'part-time' %}selected{% endif %}>Part-time</option>
+                        <option value="contract" {% if job.job_type == 'contract' %}selected{% endif %}>Contract</option>
+                        <option value="internship" {% if job.job_type == 'internship' %}selected{% endif %}>Internship</option>
+                    </select>
+                </div>
+                
+                <div class="form-actions">
+                    <button type="submit" class="btn btn-primary">Save Changes</button>
+                    <a href="{% url 'admin_dashboard' %}" class="btn btn-secondary">Cancel</a>
+                </div>
+            </form>
+        </main>
+    </div>
+    
+    <script>
+ document.getElementById('editJobForm').addEventListener('submit', async function(e) {
+    e.preventDefault();
+    
+    try {
+        const response = await fetch(this.action, {
+            method: 'POST',
+            body: new FormData(this),
+            headers: {
+                'X-CSRFToken': document.querySelector('[name=csrfmiddlewaretoken]').value,
+                'Accept': 'application/json',
+                'X-Requested-With': 'XMLHttpRequest'  // Important header
+            }
+        });
+
+        if (!response.ok) {
+            const errorData = await response.json().catch(() => null);
+            throw new Error(errorData?.error || `Server error (${response.status})`);
+        }
+
+        const data = await response.json();
+        alert('Job updated successfully!');
+        window.location.href = "{% url 'admin_dashboard' %}";
+        
+    } catch (error) {
+        console.error('Error details:', {
+            message: error.message,
+            stack: error.stack
+        });
+        alert(`Error: ${error.message}\nCheck console for details`);
+    }
+});
+    </script>
+</body>
+</html>

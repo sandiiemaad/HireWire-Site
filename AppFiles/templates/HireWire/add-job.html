@@ -1,0 +1,97 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+   <script src="{% static 'HireWire/add-job.js' %}" ></script>
+    <link rel="stylesheet" href="{% static 'HireWire/add-job.css' %}" />
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Add Job - HireWire</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="{% static 'HireWire/darkmodeaddjob.css' %}">
+    <link rel="stylesheet" href="{% static 'HireWire/darkmode.css' %}"> 
+    <script src="{% static 'HireWire/darkmode.js' %}" defer></script>
+</head>
+<body>
+    <div class="form-container">
+        <div class="form-header">
+            <h2>Add New Job Posting</h2>
+            <p>Fill in the details to create a new job listing</p>
+        </div>
+
+        <form method="post" action="{% url 'add_job' %}" id="addJobForm">
+            {% csrf_token %}
+            
+            {% if form.errors %}
+                <div class="form-errors">
+                    <p>Please correct the errors below:</p>
+                    <ul>
+                        {% for field in form %}
+                            {% for error in field.errors %}
+                                <li>{{ error }}</li>
+                            {% endfor %}
+                        {% endfor %}
+                    </ul>
+                </div>
+            {% endif %}
+
+            <div class="form-group">
+                <label for="id_title">Job Title*</label>
+                {{ form.title }}
+                <span class="helptext">{{ form.title.help_text }}</span>
+            </div>
+
+            <div class="form-group">
+                <label for="id_position">Job Position*</label>
+                {{ form.position }}
+            </div>
+
+            <div class="form-group">
+                <label for="id_experience">Job Experience*</label>
+                {{ form.experience }}
+            </div>
+
+            <div class="form-row">
+                <div class="form-group">
+                    <label for="id_job_type">Job Type*</label>
+                    {{ form.job_type }}
+                </div>
+
+                <div class="form-group">
+                    <label for="id_category">Category*</label>
+                    {{ form.category }}
+                </div>
+            </div>
+
+            <div class="form-row">
+                <div class="form-group">
+                    <label for="id_salary_min">Salary Range (Min)*</label>
+                    {{ form.salary_min }}
+                </div>
+
+                <div class="form-group">
+                    <label for="id_salary_max">Salary Range (Max)</label>
+                    {{ form.salary_max }}
+                </div>
+            </div>
+
+            <div class="form-group">
+                <label for="id_location">Location*</label>
+                {{ form.location }}
+            </div>
+
+            <div class="form-group">
+                <label for="id_description">Job Description*</label>
+                {{ form.description }}
+            </div>
+
+            <div class="form-group">
+                <label for="id_requirements">Requirements*</label>
+                {{ form.requirements }}
+            </div>
+
+            <button type="submit" class="btn-submit">Post Job</button>
+        </form>
+    </div>
+</body>
+</html>

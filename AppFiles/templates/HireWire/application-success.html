@@ -1,0 +1,38 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Application Submitted - HireWire</title>
+    <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Poppins:wght@400;600&display=swap" rel="stylesheet" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" />
+    
+    <link rel="stylesheet" href="{% static 'HireWire/success.css' %}" />
+    <script src="{% static 'HireWire/darkmode.js' %}" defer></script>
+    <link rel="stylesheet" href="{% static 'HireWire/darkmode.css' %}">
+</head>
+<body>
+    <header>
+        <div class="logo">Hire<span>Wire</span></div>
+        <nav>
+            <a href="{% url 'user-dashboard' %}">
+                <i class="fas fa-arrow-left"></i> Back to Dashboard
+            </a>
+        </nav>
+    </header>
+
+    <div class="container">
+        <div class="success-message">
+            <i class="fas fa-check-circle"></i>
+            <h2>Application Submitted Successfully!</h2>
+            <p>
+                Thank you for applying. We will review your application and get back
+                to you soon. You will receive a confirmation email with further
+                details.
+            </p>
+            <a href="{% url 'user-dashboard' %}" class="btn-back"> Browse More Jobs </a>
+        </div>
+    </div>
+</body>
+</html>

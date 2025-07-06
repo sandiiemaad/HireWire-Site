@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    {% load static %}
+     <link rel="stylesheet" href="{% static 'HireWire/form.css' %}">
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Continue - HireWire</title>
+    <link
+      href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Poppins:wght@400;600&display=swap"
+      rel="stylesheet"
+    />
+  </head>
+  <body>
+    <div class="signin-container">
+      <div class="logo">
+        <h2>HireWire</h2>
+        <p>Fast like lightning!</p>
+      </div>
+      <form id="admin-form" method="POST" action="{% url 'admin_form' %}">
+        {% csrf_token %}
+        <div class="form-group">
+          <label for="compname">Company name</label>
+          <input
+            type="text"
+            id="compname"
+            name="compname"
+            placeholder="Enter your company name"
+            required
+          />
+        </div>
+        <div class="form-group">
+          <label for="compfeild">Company field</label>
+          <input
+            type="text"
+            id="compfeild"
+            name="compfeild"
+            placeholder="Enter your company field"
+            required
+          />
+        </div>
+        <div class="form-group">
+          <label for="addpostion">Admin position</label>
+          <input
+            type="text"
+            id="addpostion"
+            name="addpostion"
+            placeholder="Enter your position"
+            required
+          />
+        </div>
+        <div class="form-group">
+          <label for="location">Select location:</label>
+          <select id="location" name="location" required>
+            <option value="" disabled selected>Select your city</option>
+            <option value="Cairo">Cairo</option>
+            <option value="Giza">Giza</option>
+            <option value="Alexandria">Alexandria</option>
+            <option value="PortSaid">Port Said</option>
+            <option value="Mansoura">Mansoura</option>
+            <option value="Fayoum">Fayoum</option>
+          </select>
+        </div>
+        <button type="submit" class="btn-submit">Submit</button>
+      </form>
+    </div>
+     <script src="{% static 'HireWire/form.js' %}"></script>
+  </body>
+</html>
