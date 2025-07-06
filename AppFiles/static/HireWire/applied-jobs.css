@@ -1,0 +1,138 @@
+.applied-jobs-container {
+    max-width: 1200px;
+    margin: 2rem auto;
+    padding: 0 1rem;
+}
+
+.applied-jobs-container h1 {
+    font-family: 'Bebas Neue', sans-serif;
+    color: #333;
+    margin-bottom: 1.5rem;
+}
+
+.status-filters {
+    display: flex;
+    gap: 0.5rem;
+    margin-bottom: 1.5rem;
+    flex-wrap: wrap;
+}
+
+.status-filter {
+    padding: 0.5rem 1rem;
+    border: none;
+    border-radius: 4px;
+    background: #f0f0f0;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.status-filter.active {
+    background: #3a86ff;
+    color: white;
+}
+
+.job-card {
+    background: white;
+    border-radius: 8px;
+    padding: 1.5rem;
+    margin-bottom: 1rem;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+}
+
+.job-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 1rem;
+}
+
+.status-badge {
+    padding: 0.25rem 0.5rem;
+    border-radius: 4px;
+    font-size: 0.8rem;
+    font-weight: bold;
+}
+
+.status-badge.pending {
+    background: #ffd166;
+    color: #333;
+}
+
+.status-badge.reviewed {
+    background: #06d6a0;
+    color: white;
+}
+
+.status-badge.rejected {
+    background: #ef476f;
+    color: white;
+}
+
+.status-badge.accepted {
+    background: #118ab2;
+    color: white;
+}
+
+.job-details {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+    gap: 1rem;
+    margin-bottom: 1rem;
+}
+
+.job-details p {
+    margin: 0;
+    color: #666;
+}
+
+.job-actions {
+    display: flex;
+    gap: 1rem;
+}
+
+.view-btn, .withdraw-btn {
+    padding: 0.5rem 1rem;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.view-btn {
+    background: #3a86ff;
+    color: white;
+}
+
+.withdraw-btn {
+    background: #f8f9fa;
+    color: #ef476f;
+    border: 1px solid #ef476f;
+}
+
+.no-applications {
+    text-align: center;
+    padding: 3rem;
+    background: white;
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+}
+
+.no-applications i {
+    font-size: 3rem;
+    color: #ddd;
+    margin-bottom: 1rem;
+}
+
+.no-applications p {
+    color: #666;
+    margin-bottom: 1.5rem;
+}
+
+.browse-jobs-btn {
+    padding: 0.75rem 1.5rem;
+    background: #3a86ff;
+    color: white;
+    border-radius: 4px;
+    text-decoration: none;
+    display: inline-block;
+}

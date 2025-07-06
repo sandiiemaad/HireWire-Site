@@ -1,0 +1,73 @@
+﻿
+:root {
+    --electric-blue: #0055ff;
+    --lightning-yellow: #ffd700;
+    --dark-navy: #0a0f3d;
+    --white: #ffffff;
+    --bg-color: #f0f2f5;
+    --text-color: #333;
+    --card-bg: #ffffff;
+    --border-color: #ddd;
+}
+
+body.dark-mode {
+    --bg-color: #121212;
+    --text-color: #f0f0f0;
+    --card-bg: #1e1e1e;
+    --border-color: #333;
+}
+
+
+body {
+    background-color: var(--bg-color);
+    color: var(--text-color);
+    transition: background 0.3s, color 0.3s;
+}
+
+.container,
+.form-container,
+.settings-sidebar,
+.settings-content {
+    background-color: var(--card-bg);
+    border: 1px solid var(--border-color);
+}
+
+body.neon-mode .settings-content {
+    position: relative;
+    overflow: hidden;
+}
+
+    body.neon-mode .settings-content::before {
+        content: '';
+        position: absolute;
+        top: -50%;
+        left: -50%;
+        width: 200%;
+        height: 200%;
+        background: linear-gradient( to bottom right, transparent 45%, var(--lightning-yellow) 50%, transparent 55% );
+        opacity: 0.1;
+        transform: rotate(30deg);
+        animation: hologram 8s infinite linear;
+    }
+     
+@keyframes hologram {
+    0% {
+        transform: rotate(30deg) translate(0,0);
+    }
+
+    25% {
+        transform: rotate(30deg) translate(-5%,5%);
+    }
+
+    50% {
+        transform: rotate(30deg) translate(5%,-5%);
+    }
+
+    75% {
+        transform: rotate(30deg) translate(-5%,5%);
+    }
+
+    100% {
+        transform: rotate(30deg) translate(0,0);
+    }
+}

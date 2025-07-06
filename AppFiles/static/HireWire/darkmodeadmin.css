@@ -1,0 +1,61 @@
+﻿/* darkmode.css */
+:root {
+    --electric-blue: #0055ff;
+    --lightning-yellow: #ffd700;
+    --dark-navy: #0a0f3d;
+    --white: #ffffff;
+    --bg-color: #f0f2f5;
+    --text-color: #333;
+    --card-bg: #ffffff;
+    --border-color: #ddd;
+    --sidebar-bg: #ffffff;
+    --table-header-bg: #0055ff;
+    --table-row-hover: #f9f9f9;
+}
+
+body.dark-mode {
+    --bg-color: #121212;
+    --text-color: #f0f0f0;
+    --card-bg: #1e1e1e;
+    --border-color: #333;
+    --sidebar-bg: #2a2a2a;
+    --table-header-bg: #0a0f3d;
+    --table-row-hover: #2a2a2a;
+}
+
+body {
+    background-color: var(--bg-color);
+    color: var(--text-color);
+    transition: all 0.3s ease;
+}
+
+header {
+    background-color: var(--dark-navy);
+    color: var(--white);
+}
+
+.sidebar {
+    background-color: var(--sidebar-bg);
+}
+
+.jobs-table {
+    background-color: var(--card-bg);
+}
+
+    .jobs-table th {
+        background-color: var(--table-header-bg);
+    }
+
+    .jobs-table tr:hover {
+        background-color: var(--table-row-hover);
+    }
+
+.modal-content {
+    background-color: var(--card-bg);
+    color: var(--text-color);
+}
+
+.form-group label {
+    color: var(--text-color);
+}
+

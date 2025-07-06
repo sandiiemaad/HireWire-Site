@@ -1,0 +1,103 @@
+:root {
+    --electric-blue: #0055ff;
+    --lightning-yellow: #ffd700;
+    --dark-navy: #0a0f3d;
+    --white: #ffffff;
+  }
+
+  * {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+  }
+  body {
+    font-family: "Poppins", sans-serif;
+    background-color: var(--dark-navy);
+    color: var(--white);
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  .signin-container {
+    background-color: rgba(255, 255, 255, 0.1);
+    backdrop-filter: blur(10px);
+    border-radius: 20px;
+    padding: 40px;
+    width: 100%;
+    max-width: 500px;
+    box-shadow: 0 15px 30px rgba(0, 0, 0, 0.3);
+    position: relative;
+    overflow: hidden;
+  }
+  .logo {
+    text-align: center;
+    margin-bottom: 30px;
+    position: relative;
+    z-index: 1;
+  }
+  .logo h2 {
+    font-family: "Bebas Neue", sans-serif;
+    font-size: 2.5rem;
+    letter-spacing: 2px;
+    color: var(--white);
+    margin-bottom: -50px;
+  }
+  .logo p {
+    color: var(--lightning-yellow);
+    font-size: 0.9rem;
+    margin-top: 38px;
+  }
+  .form-group {
+    margin-bottom: 20px;
+    position: relative;
+    z-index: 1;
+  }
+  .form-group label {
+    display: block;
+    margin-bottom: 8px;
+    font-weight: 600;
+  }
+  .form-group input,
+  .form-group select {
+    width: 100%;
+    padding: 15px;
+    border: 2px solid rgba(255, 255, 255, 0.2);
+    border-radius: 10px;
+    background-color: rgba(255, 255, 255, 0.1);
+    color: var(--white);
+    font-size: 1rem;
+    transition: all 0.3s ease;
+    font-family: "Poppins", sans-serif;
+  }
+  .form-group input::placeholder {
+    color: rgba(255, 255, 255, 0.5);
+  }
+  .form-group select option {
+    background-color: var(--dark-navy);
+    color: var(--white);
+  }
+  .btn-submit {
+    width: 100%;
+    padding: 15px;
+    border: none;
+    border-radius: 10px;
+    background-color: var(--lightning-yellow);
+    color: var(--dark-navy);
+    font-size: 1.1rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    position: relative;
+    z-index: 1;
+    margin-top: 10px;
+  }
+  .btn-submit:hover {
+    background-color: var(--electric-blue);
+    color: var(--white);
+    transform: translateY(-3px);
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+  }
+  .btn-submit:active {
+    transform: translateY(-1px);
+  }
