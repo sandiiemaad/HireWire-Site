@@ -1,2 +1,2 @@
-This folfer contains all javascript and css of all pages
+This folder contains all javascript and css of all pages
 
