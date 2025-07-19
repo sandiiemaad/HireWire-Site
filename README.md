@@ -1,31 +1,57 @@
-# HireWire – Job Search Website
+#💼 HireWire – Full Stack Job Search Website
 
-HireWire is a simple and efficient job search platform built using HTML, CSS, JavaScript, and Django (Python) following the MVC architecture. The website supports two types of users: Company Admins and Job Seekers, each with tailored features to enhance the job recruitment and application process.
+HireWire is a simple and efficient job search platform built using HTML, CSS, JavaScript, and Django (Python), following the MVC architecture.
+The platform supports two types of users: Company Admins and Job Seekers, each with tailored features to simplify recruitment and job applications.
 
-🔑 Key Features:
+🚀 Key Features:
 
-👨‍💼 Company Admin:
--Register with a form including username, password, email, and a flag for company admin (is_company_admin). If selected, additional company details are required.
+👨‍💼 Company Admin
 
--Login securely to access the dashboard.
+-Register with a form including username, password, email, and a flag for company admin (is_company_admin).
+If selected, additional company details are required.
 
--Add Job Opportunities with details such as job ID, title, salary, company name, description, years of experience, job status (open or closed), and created by the logged-in admin.
+-Secure login to access the admin dashboard.
 
--View Jobs posted by their company.
+-Post Job Opportunities with details including:
+Job ID, Title, Salary, Company Name, Description, Years of Experience, Job Status (Open/Closed), and creator info (the logged-in admin).
 
--Edit job postings to update or correct details.
+-View, Edit, and Delete job postings as needed.
 
--Delete jobs no longer available.
+👤 Job Seeker (User)
+-Register with username, password, and email (standard user account).
 
-👤 Job Seeker (User):
--Register with username, password, email, and a flag for standard user.
--Login to access job listings and application features.
+-Secure login to access job listings and features.
+
 -Search Jobs by title or required years of experience.
--View Available Jobs and browse listings.
--View Job Details on a dedicated job page.
--Apply for Jobs directly from the job detail page.
--Track Applications by viewing the list of jobs they’ve applied to.
 
-🌐 UI & Navigation:
--A responsive navigation bar is included and appears consistently across all pages.
--The navigation menu is dynamically updated based on the type of logged-in user (admin or job seeker), enhancing user experience.
+-Browse available jobs and view details on a dedicated page.
+
+-Apply for jobs directly and track all applied jobs in one place.
+
+
+🌐 User Interface & Navigation
+-Includes a responsive navigation bar visible across all pages.
+
+-Navigation dynamically updates based on the logged-in user type (Admin or Job Seeker) for a smoother user experience.
+
+
+🛠 Tools & Technologies
+-Frontend: HTML5, CSS3, JavaScript
+
+-Backend: Python, Django (MVC architecture)
+
+-Database: SQLite (Django default)
+
+
+Additional Tools:
+
+-Django ORM for database management
+
+-Django Authentication for secure login
+
+-CSS Flexbox & Grid for responsive design
+
+-JavaScript for interactivity
+
+
+
