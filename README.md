@@ -34,7 +34,7 @@ The platform supports **two types of users: Company Admins and Job Seekers**, ea
 
 ## **🛠 Tools & Technologies**
 - **Frontend:** HTML5, CSS3, JavaScript  
-- **Backend:** Python, Django (MVC architecture)  
+- **Backend:** Python, Django (MVC architecture), Ajax
 - **Database:** SQLite (Django default)  
 - **Additional Tools:**  
   - Django ORM for database management  
