@@ -3,6 +3,7 @@
 HireWire is a simple and efficient job search platform built using HTML, CSS, JavaScript, and Django (Python) following the MVC architecture. The website supports two types of users: Company Admins and Job Seekers, each with tailored features to enhance the job recruitment and application process.
 
 🔑 Key Features:
+
 👨‍💼 Company Admin:
 -Register with a form including username, password, email, and a flag for company admin (is_company_admin). If selected, additional company details are required.
 
