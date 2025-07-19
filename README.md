@@ -5,10 +5,15 @@ HireWire is a simple and efficient job search platform built using HTML, CSS, Ja
 🔑 Key Features:
 👨‍💼 Company Admin:
 -Register with a form including username, password, email, and a flag for company admin (is_company_admin). If selected, additional company details are required.
+
 -Login securely to access the dashboard.
+
 -Add Job Opportunities with details such as job ID, title, salary, company name, description, years of experience, job status (open or closed), and created by the logged-in admin.
+
 -View Jobs posted by their company.
+
 -Edit job postings to update or correct details.
+
 -Delete jobs no longer available.
 
 👤 Job Seeker (User):
