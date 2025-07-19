@@ -1,4 +1,4 @@
-#💼HireWire – Full Stack Job Search Website
+**💼HireWire – Full Stack Job Search Website**
 
 HireWire is a simple and efficient job search platform built using HTML, CSS, JavaScript, and Django (Python), following the MVC architecture.
 The platform supports two types of users: Company Admins and Job Seekers, each with tailored features to simplify recruitment and job applications.
